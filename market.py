@@ -85,3 +85,31 @@ if st.button("Calcular Total a Pagar"):
         total_pagar = st.session_state.table_data["Total"].sum()
         st.subheader("Total a Pagar")
         st.write(f"Lempiras {total_pagar:.2f}")
+
+"""
+===========================
+ENTENDER EL FLUJO DEL PROGRAMA
+===========================
+
+¿Qué hace st.session_state?
+st.session_state se utiliza para mantener la información entre las interacciones
+del usuario. Como Streamlit vuelve a ejecutar todo el programa en cada acción,
+esta estructura permite que la tabla de compras no se pierda y se mantenga
+durante el uso de la aplicación.
+
+¿Qué hace el cálculo del subtotal?
+El programa calcula el subtotal multiplicando el precio por la cantidad.
+Luego calcula el impuesto del 15% y obtiene el total. Esa información se guarda
+en una nueva fila que se agrega al DataFrame almacenado en la sesión.
+
+¿Por qué se usa st.form()?
+st.form() permite enviar los datos del producto en un solo evento al presionar
+el botón "Comprar producto", evitando que el programa se ejecute cada vez que
+se cambia un campo del formulario.
+
+¿Qué se muestra con st.dataframe()?
+Se muestra la tabla actual de compras guardada en la sesión, la cual se va
+actualizando cada vez que se agrega un nuevo producto.
+
+-
+"""
